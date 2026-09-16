@@ -1,0 +1,266 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Fredoka", "Baloo 2", system-ui, sans-serif;
+  --font-sans: "Nunito", "Quicksand", system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 14px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-cream: var(--cream);
+  --color-paw: var(--paw);
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-love: var(--love);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+
+  --shadow-soft: 0 10px 30px -12px color-mix(in oklab, var(--primary) 45%, transparent);
+  --shadow-card: 0 6px 20px -10px color-mix(in oklab, var(--brand) 28%, transparent);
+  --shadow-float: 0 20px 50px -20px color-mix(in oklab, var(--brand) 40%, transparent);
+}
+
+/* ============================================================================
+ *  🎨 PALETA DE CORES DO APP (MODO CLARO)
+ * ----------------------------------------------------------------------------
+ *  Aqui ficam TODAS as cores. Se você quiser MUDAR A IDENTIDADE VISUAL
+ *  do app, é AQUI que mexe — uma única troca aqui muda em todas as telas.
+ *
+ *  As cores são em formato `oklch(luminosidade chroma matiz)`:
+ *    • luminosidade → 0 = preto, 1 = branco
+ *    • chroma       → 0 = cinza, valores maiores = cor mais "viva"
+ *    • matiz        → ângulo (0 = vermelho, 60 = amarelo/laranja, 240 = azul)
+ * ========================================================================== */
+/* ============================================================================
+ *  🎨 PALETA NUPPY OFICIAL — Warm Pastel · Pet-Friendly · Soft Beige
+ * ----------------------------------------------------------------------------
+ *  HEX de referência (mexa AQUI pra mudar a identidade em TODAS as telas):
+ *    #F2EFEA  Creme claro          → background
+ *    #FFFDF9  Branco quente        → cards
+ *    #ECD2A9  Bege pastel          → accent
+ *    #D1B497  Bege rosado
+ *    #DBA262  Caramelo claro       → brand-soft
+ *    #B3A69B  Cinza quente
+ *    #9A572C  Marrom principal     → brand (títulos)
+ *    #5B351F  Marrom escuro        → foreground (texto)
+ *    #E49935  Laranja destaque     → primary (botões)
+ *    #4FA3D9  Azul coleira         → info
+ *    #A9D6F2  Azul claro
+ * ========================================================================== */
+:root {
+  --radius: 1.25rem;                                /* cantos generosos = sensação premium */
+
+  --background: #F2EFEA;                            /* creme claro */
+  --foreground: #5B351F;                            /* marrom escuro — texto principal */
+
+  --card: #FFFDF9;                                  /* branco quente */
+  --card-foreground: #5B351F;
+
+  --popover: #FFFDF9;
+  --popover-foreground: #5B351F;
+
+  /* 🟧 CTA principal — laranja destaque */
+  --primary: #E49935;
+  --primary-foreground: #FFFDF9;
+
+  /* 🟨 Secundária — bege pastel */
+  --secondary: #ECD2A9;
+  --secondary-foreground: #5B351F;
+
+  --muted: #ECE4D7;
+  --muted-foreground: #8A7A6D;                      /* cinza quente legível */
+
+  --accent: #ECD2A9;
+  --accent-foreground: #5B351F;
+
+  --destructive: #C0432D;
+  --destructive-foreground: #FFFDF9;
+
+  --border: #E3D6C2;
+  --input: #F6EFE2;
+  --ring: #E49935;
+
+  /* 🐾 Tokens exclusivos Nuppy */
+  --cream: #F2EFEA;
+  --paw: #ECD2A9;
+  --brand: #9A572C;                                 /* marrom principal */
+  --brand-soft: #DBA262;                            /* caramelo */
+  --love: #E07A5F;                                  /* coral do coração */
+  --info: #4FA3D9;                                  /* azul coleira */
+  --info-soft: #A9D6F2;
+
+  /* Gradientes reutilizáveis (use via background-image) */
+  --gradient-warm:    linear-gradient(135deg, #FFFDF9 0%, #F2EFEA 60%, #ECD2A9 100%);
+  --gradient-primary: linear-gradient(135deg, #E49935 0%, #DBA262 100%);
+  --gradient-brand:   linear-gradient(135deg, #9A572C 0%, #5B351F 100%);
+}
+
+/* ============================================================================
+ *  🌙 PALETA DO MODO ESCURO
+ *  Aplicada quando o <html> tem a classe `.dark` (ex.: tema noturno).
+ *  Use os MESMOS NOMES das variáveis acima, só com valores escuros.
+ * ========================================================================== */
+.dark {
+  --background: oklch(0.22 0.03 50);
+  --foreground: oklch(0.96 0.02 80);
+  --card: oklch(0.28 0.04 50);
+  --card-foreground: oklch(0.96 0.02 80);
+  --popover: oklch(0.28 0.04 50);
+  --popover-foreground: oklch(0.96 0.02 80);
+  --primary: oklch(0.78 0.17 60);
+  --primary-foreground: oklch(0.22 0.03 50);
+  --secondary: oklch(0.34 0.05 50);
+  --secondary-foreground: oklch(0.96 0.02 80);
+  --muted: oklch(0.32 0.04 50);
+  --muted-foreground: oklch(0.75 0.03 70);
+  --accent: oklch(0.38 0.06 55);
+  --accent-foreground: oklch(0.96 0.02 80);
+  --destructive: oklch(0.65 0.22 25);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.78 0.17 60);
+  --cream: oklch(0.28 0.04 50);
+  --paw: oklch(0.38 0.06 55);
+  --brand: oklch(0.85 0.10 60);
+  --brand-soft: oklch(0.75 0.12 55);
+  --love: oklch(0.7 0.22 20);
+}
+
+/* ============================================================================
+ *  ESTILOS BASE — aplicados automaticamente em todo HTML
+ * ========================================================================== */
+@layer base {
+  * { border-color: var(--color-border); }                          /* cor padrão de qualquer borda */
+  html, body { background-color: var(--color-background); color: var(--color-foreground); }
+  body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }  /* fonte do texto normal */
+  h1, h2, h3, h4, .font-display { font-family: var(--font-display); letter-spacing: -0.01em; } /* fonte dos títulos */
+}
+
+/* ============================================================================
+ *  COMPONENTES REUTILIZÁVEIS  (use estas classes no JSX direto)
+ * ========================================================================== */
+@layer components {
+  /* 🐾 Fundo decorado com "patinhas" — usado nas telas grandes (auth, etc.) */
+  .nuppy-bg {
+    background-color: var(--cream);
+    background-image:
+      radial-gradient(circle at 12% 8%, color-mix(in oklab, var(--paw) 55%, transparent) 0 8px, transparent 9px),
+      radial-gradient(circle at 88% 18%, color-mix(in oklab, var(--paw) 50%, transparent) 0 6px, transparent 7px),
+      radial-gradient(circle at 22% 92%, color-mix(in oklab, var(--paw) 55%, transparent) 0 8px, transparent 9px),
+      radial-gradient(circle at 78% 80%, color-mix(in oklab, var(--paw) 50%, transparent) 0 7px, transparent 8px);
+    background-size: 100% 100%;
+  }
+
+  /* 🟦 Card padrão — branco quente, borda sutil e sombra macia */
+  .nuppy-card {
+    background: var(--card);
+    border: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* ✨ Card "flutuante" — usado em destaques importantes (hero, modal) */
+  .nuppy-card-float {
+    background: var(--gradient-warm);
+    border: 1px solid color-mix(in oklab, var(--brand-soft) 30%, transparent);
+    border-radius: calc(var(--radius) + 6px);
+    box-shadow: var(--shadow-float);
+  }
+
+  /* ⌨️ INPUT padrão (com ícone à esquerda) */
+  .nuppy-input {
+    @apply w-full rounded-2xl bg-card border border-border px-4 py-3 pl-11 text-sm outline-none transition;
+    @apply focus:border-primary focus:ring-2 focus:ring-primary/30;
+  }
+
+  /* 📝 TEXTAREA */
+  .nuppy-textarea {
+    @apply w-full rounded-2xl bg-card border border-border px-3 py-2 text-sm outline-none transition;
+    @apply focus:border-primary focus:ring-2 focus:ring-primary/30;
+  }
+
+  /* 🟧 BOTÃO PRINCIPAL — gradiente laranja → caramelo, com sombra suave */
+  .nuppy-btn-primary {
+    @apply w-full rounded-full text-primary-foreground font-display text-lg py-3.5 shadow-[var(--shadow-soft)] transition active:scale-[0.98] hover:brightness-105;
+    background-image: var(--gradient-primary);
+  }
+
+  /* ⬜ BOTÃO SECUNDÁRIO (fantasma) */
+  .nuppy-btn-ghost {
+    @apply w-full rounded-full border border-border bg-card text-foreground font-display text-base py-3 flex items-center justify-center gap-2 transition hover:bg-accent hover:border-brand-soft;
+  }
+
+  /* 🏷️ Chip/pill genérico (categorias, tags) */
+  .nuppy-chip {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-accent text-accent-foreground px-3 py-1 text-xs font-display border border-border/60;
+  }
+
+  /* 📰 Cabeçalho de seção padronizado */
+  .nuppy-section-title {
+    @apply font-display text-lg text-brand tracking-tight;
+  }
+}
+
+/* ============================================================================
+ *  ANIMAÇÕES
+ * ========================================================================== */
+/* 💗 Coração que aparece quando o usuário dá DUPLO-TOQUE no feed social.
+   Cresce, segura por um instante e some desaparecendo pra cima. */
+@keyframes heart-pop {
+  0%   { transform: scale(0.2); opacity: 0; }
+  30%  { transform: scale(1.2); opacity: 1; }
+  60%  { transform: scale(1);   opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+.animate-heart-pop { animation: heart-pop 700ms ease-out forwards; }
+
+/* ⬆️ Entrada suave (cards, listas) */
+@keyframes fade-up {
+  0%   { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0);   }
+}
+.animate-fade-up { animation: fade-up 420ms ease-out both; }
+
+/* ✨ Brilho deslizante (skeleton/loading premium) */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0;  }
+}
+.shimmer {
+  background: linear-gradient(90deg,
+    color-mix(in oklab, var(--muted) 80%, transparent) 0%,
+    color-mix(in oklab, var(--card)  90%, transparent) 50%,
+    color-mix(in oklab, var(--muted) 80%, transparent) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+
