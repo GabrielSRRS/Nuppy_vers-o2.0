@@ -119,12 +119,11 @@ function MapBody() {
       window.__nuppyInitMap = () => setReady(true);
       return;
     }
-    const key = import.meta.env.VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BROWSER_KEY;
-    const channel = import.meta.env.VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_TRACKING_ID;
+    const key = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
     window.__nuppyInitMap = () => setReady(true);
     const s = document.createElement("script");
     s.dataset.nuppyGmaps = "1";
-    s.src = `https://maps.googleapis.com/maps/api/js?key=${key}&loading=async&callback=__nuppyInitMap&channel=${channel}`;
+    s.src = `https://maps.googleapis.com/maps/api/js?key=${key}&loading=async&callback=__nuppyInitMap`;
     s.async = true;
     document.head.appendChild(s);
   }, []);
